@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生成AIセミナー実施レポート｜聖籠町商工会青年部 2026.2.18</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:    #0A84FF;
+    --green:   #30D158;
+    --orange:  #FF9F0A;
+    --dark:    #1C1C1E;
+    --card:    #2C2C2E;
+    --white:   #FFFFFF;
+    --off:     #F5F5F7;
+    --muted:   #6E6E73;
+    --caption: #AEAEB2;
+    --border:  #E5E5EA;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    background: var(--off);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    padding: 5rem 1.5rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--green);
+  }
+  .hero .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .hero h1 span { color: var(--green); }
+  .hero .tagline {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--caption);
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+  }
+  .hero .tagline-sub {
+    font-size: 0.82rem;
+    color: #636366;
+    margin-bottom: 2.5rem;
+  }
+
+  /* KPI 3点 */
+  .hero-kpi {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    background: #3A3A3C;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .hero-kpi-item {
+    flex: 1;
+    background: #2C2C2E;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+  .hero-kpi-item:first-child { border-radius: 16px 0 0 16px; }
+  .hero-kpi-item:last-child  { border-radius: 0 16px 16px 0; }
+  .hero-kpi-item .hk-num {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 800;
+    color: var(--green);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .hero-kpi-item .hk-label {
+    font-size: 0.72rem;
+    color: var(--caption);
+    font-weight: 500;
+  }
+  .hero .meta { font-size: 0.75rem; color: #636366; }
+
+  /* ── BADGE ── */
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(48,209,88,0.15);
+    border: 1px solid rgba(48,209,88,0.3);
+    color: var(--green);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    border-bottom: 2px solid var(--green);
+    padding-bottom: 4px;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
+  .section-title {
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .section-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 1.75rem;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: #F0FFF5;
+    border: 1px solid #A8EDBE;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .highlight-box .hb-num {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--green);
+    white-space: nowrap;
+  }
+  .highlight-box .hb-text {
+    font-size: 0.85rem;
+    color: #1C4A2A;
+  }
+  .highlight-box .hb-text strong { color: #0F6E3A; }
+
+  /* ── KPI ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+  .kpi-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--green);
+  }
+  .kpi-card .kl { font-size: 0.68rem; color: var(--caption); margin-bottom: 4px; }
+  .kpi-card .kv {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--green);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .kpi-card .ks { font-size: 0.65rem; color: var(--caption); }
+
+  /* ── VOICE ── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .voice-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+  }
+  .voice-card .qm {
+    font-size: 1.8rem;
+    color: var(--green);
+    line-height: 1;
+    font-family: Georgia, serif;
+    margin-bottom: 4px;
+  }
+  .voice-card .vt {
+    font-size: 0.88rem;
+    color: var(--dark);
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+  .voice-card .tag {
+    display: inline-block;
+    background: #F0FFF5;
+    color: #0F6E3A;
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CHART ── */
+  .chart-wrap {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .chart-wrap .ct { font-size: 0.72rem; color: var(--muted); margin-bottom: 10px; font-weight: 500; }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── ACTION TABLE ── */
+  .action-wrap {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .action-wrap table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .action-wrap th {
+    background: var(--dark);
+    color: var(--white);
+    padding: 9px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+  .action-wrap td { padding: 8px 14px; border-bottom: 1px solid #F2F2F7; color: #3A3A3C; }
+  .action-wrap tr:last-child td { border-bottom: none; }
+  .action-wrap tr:nth-child(even) td { background: #FAFAFA; }
+
+  /* ── SUMMARY ── */
+  .summary-dark {
+    background: var(--dark);
+    border-radius: 14px;
+    padding: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  .summary-dark .sd-label {
+    font-size: 0.7rem;
+    color: var(--green);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .summary-dark .sd-items { display: flex; flex-direction: column; gap: 10px; }
+  .summary-dark .sd-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.85rem; color: var(--caption); line-height: 1.55;
+  }
+  .summary-dark .sd-dot {
+    width: 6px; height: 6px; min-width: 6px;
+    background: var(--green); border-radius: 50%; margin-top: 8px;
+  }
+
+  /* ── COMPARE ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .compare-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+  }
+  .compare-card .cc-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+  }
+  .compare-card.seiro { border-top: 3px solid var(--green); }
+  .compare-card.matsumoto { border-top: 3px solid var(--blue); }
+  .compare-card.seiro .cc-label { color: var(--green); }
+  .compare-card.matsumoto .cc-label { color: var(--blue); }
+  .compare-card .cc-row {
+    display: flex; justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #F2F2F7;
+    font-size: 0.8rem;
+  }
+  .compare-card .cc-row:last-child { border-bottom: none; }
+  .compare-card .cc-row .cc-key { color: var(--muted); }
+  .compare-card .cc-row .cc-val { font-weight: 700; color: var(--dark); }
+  .compare-card.seiro .cc-row .cc-val { color: var(--green); }
+  .compare-card.matsumoto .cc-row .cc-val { color: var(--blue); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--dark);
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+  }
+  .cta-section p {
+    font-size: 0.9rem;
+    color: var(--caption);
+    margin-bottom: 0.5rem;
+  }
+
+  footer {
+    background: #111;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #636366;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .hero-kpi { flex-direction: column; gap: 1px; border-radius: 12px; }
+    .hero-kpi-item:first-child { border-radius: 12px 12px 0 0; }
+    .hero-kpi-item:last-child  { border-radius: 0 0 12px 12px; }
+    .chart-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ① HERO -->
+<div class="hero">
+  <p class="eyebrow">Seminar Report｜聖籠町商工会青年部 × JA青壮年部　2026.2.18</p>
+  <h1>はじめてでも、<br><span>「できた」</span>で終わりました。</h1>
+  <p class="tagline">AI未経験64%。それでも全員が前に進みました。</p>
+  <p class="tagline-sub">60分・1講師・対面ハンズオン</p>
+
+  <div class="badge-row">
+    <span class="badge">満足度 100%</span>
+    <span class="badge">ネクストアクション明言率 100%</span>
+    <span class="badge">AI未経験率 64%</span>
+  </div>
+
+  <div class="hero-kpi">
+    <div class="hero-kpi-item">
+      <div class="hk-num">100<span style="font-size:0.5em;font-weight:600;">%</span></div>
+      <div class="hk-label">満足度</div>
+    </div>
+    <div class="hero-kpi-item">
+      <div class="hk-num">66.7<span style="font-size:0.5em;font-weight:600;">%</span></div>
+      <div class="hk-label">成果物持ち帰り率</div>
+    </div>
+    <div class="hero-kpi-item">
+      <div class="hk-num">100<span style="font-size:0.5em;font-weight:600;">%</span></div>
+      <div class="hk-label">ネクストアクション</div>
+    </div>
+  </div>
+
+  <p class="meta">参加者14名　｜　アンケート回答12名（回答率70.6%）　｜　講師：株式会社 Newtral. 松本 寿治</p>
+</div>
+
+<!-- ② 参加者の声 -->
+<div class="section">
+  <p class="section-label">Voices</p>
+  <h2 class="section-title">12名全員が、「明日やること」を言葉にしました。</h2>
+  <p class="section-sub">建設業・農業・製造業・商社——業種を問わず、自分の仕事への応用が生まれました。</p>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="qm">"</div>
+      <div class="vt">会社の求人をかっこよく作ること</div>
+      <span class="tag">建設業 × 採用</span>
+    </div>
+    <div class="voice-card">
+      <div class="qm">"</div>
+      <div class="vt">修理の症例をAIで整理するアイデアが生まれた</div>
+      <span class="tag">製造・修理 × 業務効率化</span>
+    </div>
+    <div class="voice-card">
+      <div class="qm">"</div>
+      <div class="vt">自分で調べるより1000倍早いので、チャッピーを習慣にしたい</div>
+      <span class="tag">全業種 × 日常活用</span>
+    </div>
+    <div class="voice-card">
+      <div class="qm">"</div>
+      <div class="vt">集客に関するSNSでの効果的な宣伝</div>
+      <span class="tag">商社 × 販路拡大</span>
+    </div>
+    <div class="voice-card">
+      <div class="qm">"</div>
+      <div class="vt">従業員への指導の仕方</div>
+      <span class="tag">建設業 × 人材育成</span>
+    </div>
+    <div class="voice-card">
+      <div class="qm">"</div>
+      <div class="vt">ちゃんとした指示文を送るようにする</div>
+      <span class="tag">全業種 × プロンプト</span>
+    </div>
+    <div class="voice-card">
+      <div class="qm">"</div>
+      <div class="vt">プレゼン資料をつくる</div>
+      <span class="tag">全業種 × 資料作成</span>
+    </div>
+    <div class="voice-card">
+      <div class="qm">"</div>
+      <div class="vt">AIを少しずつ取り入れていこうと思います</div>
+      <span class="tag">全業種 × 習慣化</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ③ データ -->
+<div class="section">
+  <p class="section-label">Data</p>
+  <h2 class="section-title">数字で見る実績</h2>
+  <p class="section-sub">60分・14名の小規模セミナーで、すべての指標が一般平均を大きく上回りました。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kl">参加者数</div>
+      <div class="kv">14<span style="font-size:.8rem;">名</span></div>
+      <div class="ks">回答率 70.6%（12名）</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kl">満足度</div>
+      <div class="kv">100<span style="font-size:.8rem;">%</span></div>
+      <div class="ks">とても満足 75%・満足 25%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kl">成果物持ち帰り率</div>
+      <div class="kv">66.7<span style="font-size:.8rem;">%</span></div>
+      <div class="ks">8名 / 12名</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kl">ネクストアクション</div>
+      <div class="kv">100<span style="font-size:.8rem;">%</span></div>
+      <div class="ks">12名全員が行動宣言</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kl">理解到達率</div>
+      <div class="kv">100<span style="font-size:.8rem;">%</span></div>
+      <div class="ks">全員が「使い方が分かった」以上</div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-wrap">
+      <div class="ct">満足度の分布（n=12）</div>
+      <div style="position:relative;width:100%;height:220px;">
+        <canvas id="satChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <div class="ct">成果物の持ち帰り状況</div>
+      <div style="position:relative;width:100%;height:220px;">
+        <canvas id="takeChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ④ 参加者属性 -->
+<div class="section">
+  <p class="section-label">Profile</p>
+  <h2 class="section-title">参加者の属性</h2>
+  <p class="section-sub">建設・建築関連が約60%を占める、聖籠町の産業特性を反映した構成です。業種が集中していたからこそ、プロンプト例の「刺さり方」が高まりました。</p>
+
+  <div class="highlight-box">
+    <div class="hb-num">64%</div>
+    <div class="hb-text">
+      参加者の<strong>64%がAI未経験</strong>でした。それでも全員が「使い方が分かった」以上のレベルに到達。<strong>はじめての方ほど効果が大きい</strong>セミナーです。
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-wrap">
+      <div class="ct">業種構成（14社）</div>
+      <div style="position:relative;width:100%;height:240px;">
+        <canvas id="industryChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <div class="ct">セミナー前のAI利用状況（14名）</div>
+      <div style="position:relative;width:100%;height:240px;">
+        <canvas id="aiChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ⑤ 松本との比較 -->
+<div class="section">
+  <p class="section-label">Compare</p>
+  <h2 class="section-title">10名でも、50名でも。</h2>
+  <p class="section-sub">規模も時間も違う。それでも、同じ結果が出ました。</p>
+
+  <div class="compare-grid">
+    <div class="compare-card seiro">
+      <div class="cc-label">聖籠町商工会青年部　2026.2.18</div>
+      <div class="cc-row"><span class="cc-key">参加者数</span><span class="cc-val">14名</span></div>
+      <div class="cc-row"><span class="cc-key">時間</span><span class="cc-val">60分</span></div>
+      <div class="cc-row"><span class="cc-key">満足度</span><span class="cc-val">100%</span></div>
+      <div class="cc-row"><span class="cc-key">成果物持ち帰り率</span><span class="cc-val">66.7%</span></div>
+      <div class="cc-row"><span class="cc-key">ネクストアクション</span><span class="cc-val">100%</span></div>
+      <div class="cc-row"><span class="cc-key">AI未経験率</span><span class="cc-val">64%</span></div>
+    </div>
+    <div class="compare-card matsumoto">
+      <div class="cc-label">松本商工会議所青年部　2026.1.29</div>
+      <div class="cc-row"><span class="cc-key">参加者数</span><span class="cc-val">46名</span></div>
+      <div class="cc-row"><span class="cc-key">時間</span><span class="cc-val">90分</span></div>
+      <div class="cc-row"><span class="cc-key">満足度</span><span class="cc-val">85.7%</span></div>
+      <div class="cc-row"><span class="cc-key">成果物持ち帰り率</span><span class="cc-val">59.5%</span></div>
+      <div class="cc-row"><span class="cc-key">ネクストアクション</span><span class="cc-val">69%</span></div>
+      <div class="cc-row"><span class="cc-key">AI未経験率</span><span class="cc-val">ー</span></div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="hb-num" style="font-size:1.2rem;line-height:1.3;">小規模でも<br>短時間でも</div>
+    <div class="hb-text">
+      14名・60分という小規模・短時間の設定でも、46名・90分の松本と同等以上の成果が出ました。<strong>規模や時間に関わらず、同じ効果が期待できます。</strong>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ⑥ ネクストアクション宣言 -->
+<div class="section">
+  <p class="section-label">Actions</p>
+  <h2 class="section-title">参加者のネクストアクション宣言</h2>
+  <p class="section-sub">12名全員が「明日から試すこと」を自分の言葉で書いてくれました。</p>
+
+  <div class="action-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>タイプ</th>
+          <th>件数</th>
+          <th>代表的な声</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>業務に直結する具体アクション</strong></td>
+          <td>5件</td>
+          <td>求人作成、SNS集客、修理の症例整理、プレゼン資料、従業員指導</td>
+        </tr>
+        <tr>
+          <td><strong>日常的にAIを使う習慣化</strong></td>
+          <td>5件</td>
+          <td>毎日の疑問を聞く、チャッピーを習慣に、少しずつ取り入れる</td>
+        </tr>
+        <tr>
+          <td><strong>プロンプトの質を上げる意識</strong></td>
+          <td>2件</td>
+          <td>ちゃんとした指示文を送る、文章作成に活用</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ⑦ AIによる客観的評価 -->
+<div class="section">
+  <p class="section-label">Summary</p>
+  <h2 class="section-title">AIによる客観的な評価</h2>
+  <p class="section-sub">データをもとに、客観的に分析しました。</p>
+
+  <div class="summary-dark">
+    <div class="sd-label">成功要因</div>
+    <div class="sd-items">
+      <div class="sd-item">
+        <div class="sd-dot"></div>
+        <span>業種が建設系60%に集中していたことで、プロンプト例の「刺さり方」が高まった。参加者同士が「うちも使える」と共鳴しやすい環境が生まれた。</span>
+      </div>
+      <div class="sd-item">
+        <div class="sd-dot"></div>
+        <span>Slidoで事前に「人材不足」「事務処理の効率化」という課題を可視化し、「採用向けInstagram投稿文」「求人文作成」など業種別ヒントがリアルな課題解決と直結した。</span>
+      </div>
+      <div class="sd-item">
+        <div class="sd-dot"></div>
+        <span>AI未経験者が64%と多い中でも、全員が「使い方が分かった」以上に到達。初心者ほど効果が大きいセミナー設計になっている。</span>
+      </div>
+      <div class="sd-item">
+        <div class="sd-dot"></div>
+        <span>ネガティブな不満はゼロ。「もっと欲しい」系の要望のみで、次回開催への強い需要を示している。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ 当日スライド -->
+<div class="section">
+  <p class="section-label">Slides</p>
+  <h2 class="section-title">当日使用したスライド</h2>
+  <p class="section-sub">実際にこの資料を使ってセミナーを実施しました。</p>
+
+  <div style="background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden;">
+    <iframe
+      src="https://drive.google.com/file/d/1nyosvVgyE7m_XhVjA0wQJ_uq3LHYQ2BO/preview"
+      width="100%"
+      height="480"
+      allow="autoplay"
+      style="display:block;border:none;"
+    ></iframe>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ⑨ CTA -->
+<div class="cta-section">
+  <h2>あなたにも、同じ変化が起きます。</h2>
+  <p>専門知識は必要ありません。スマホやPCを持ってきていただくだけで大丈夫です。</p>
+  <p style="font-size:0.82rem;color:#636366;margin-top:0.5rem;">株式会社 Newtral.　松本 寿治　｜　080-5540-4287</p>
+</div>
+
+<footer>
+  株式会社 Newtral. 松本 寿治　｜　生成AIセミナー実施レポート　聖籠町商工会青年部 × JA青壮年部　2026年2月18日
+</footer>
+
+<script>
+const tc = 'rgba(0,0,0,0.45)';
+const gc = 'rgba(0,0,0,0.04)';
+
+// 業種構成
+new Chart(document.getElementById('industryChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['建設・土木 41%', '建築資材・設備 18%', '製造・工業 12%', '商社 12%', '農業 12%', 'その他 6%'],
+    datasets: [{
+      data: [7, 3, 2, 2, 2, 1],
+      backgroundColor: ['#0A84FF', '#30D158', '#FF9F0A', '#FF453A', '#BF5AF2', '#AEAEB2'],
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 10 }, color: tc, padding: 8, boxWidth: 10 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}社` } }
+    }
+  }
+});
+
+// AI利用状況
+new Chart(document.getElementById('aiChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['ChatGPT利用 29%', 'Gemini利用 7%', '使ったが覚えていない 21%', '未経験 43%'],
+    datasets: [{
+      data: [4, 1, 3, 6],
+      backgroundColor: ['#0A84FF', '#30D158', '#FF9F0A', '#AEAEB2'],
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 10 }, color: tc, padding: 8, boxWidth: 10 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}名` } }
+    }
+  }
+});
+
+// 満足度
+new Chart(document.getElementById('satChart'), {
+  type: 'bar',
+  data: {
+    labels: ['とても満足（75%）', '満足（25%）', 'ふつう（0%）'],
+    datasets: [{
+      data: [9, 3, 0],
+      backgroundColor: ['#30D158', '#0A84FF', '#AEAEB2'],
+      borderRadius: 6, borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}名` } } },
+    scales: {
+      x: { ticks: { color: tc, font: { size: 10 } }, grid: { display: false } },
+      y: { ticks: { color: tc, font: { size: 10 }, stepSize: 3 }, grid: { color: gc }, max: 12 }
+    }
+  }
+});
+
+// 持ち帰り
+new Chart(document.getElementById('takeChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['すぐ使える成果物', '使い方は理解できた', '途中まできた'],
+    datasets: [{
+      data: [8, 3, 1],
+      backgroundColor: ['#30D158', '#0A84FF', '#FF9F0A'],
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 10 }, color: tc, padding: 8, boxWidth: 10 } },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}名` } }
+    }
+  }
+});
+</script>
+</body>
+</html>
